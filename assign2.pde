@@ -146,17 +146,22 @@ void draw() {
     
    case GAME_OVER:
     image(gameover,0,0);
+       groundhogX =-300;
+       groundhogY =-300;
     if(mouseX>248 && mouseX<248+144 && mouseY>360 
        && mouseY<360+60){
       image(restartHovered,248,360);
       if(mousePressed){
         gameState = GAME_RUN;
+        groundhogX =320;
+        groundhogY =80;
         lifeNumber=2;
         cabbageX=80*floor(random(0,8));
         cabbageY=160+80*floor(random(0,4));
       }
     }else{
       image(restartNormal,248,360);
+
     }
     break;
   }
