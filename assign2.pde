@@ -1,5 +1,6 @@
 PImage bg,soil,life,groundhog,soldier,cabbage,title,gameover;
 PImage startNormal,startHovered,restartNormal,restartHovered;
+PImage groundhogRight,groundhogDown,groundhogLeft;
 
 float soldierX,soldierY;
 float cabbageX,cabbageY;
@@ -12,6 +13,7 @@ final int GAME_RUN=1;
 final int GAME_OVER=2;
 final int GAME_WIN=3;
 int gameState=GAME_START;
+
 
 boolean upPressed=false;
 boolean downPressed=false;
@@ -35,6 +37,9 @@ void setup() {
   restartHovered=loadImage("img/restartHovered.png");
   title=loadImage("img/title.jpg");
   gameover=loadImage("img/gameover.jpg");
+  groundhogRight=loadImage("img/groundhogRight.png");
+  groundhogDown=loadImage("img/groundhogDown.png");
+  groundhogLeft=loadImage("img/groundhogLeft.png");
   
   //soldierPosition
   soldierX=floor(random(0,560));
@@ -48,6 +53,7 @@ void setup() {
   groundhogX =320;
   groundhogY =80;
   groundhogSpeed =80;
+
   
   //life
   lifeX=10;
@@ -72,7 +78,9 @@ void draw() {
     break;
     
   //GAME_RUN
-  case GAME_RUN:  
+  case GAME_RUN: 
+  
+
     
     //bg.soil.life
     background(bg);
@@ -157,18 +165,22 @@ void keyPressed(){
   if(key ==CODED){
   switch(keyCode){
     case DOWN:
+    image(groundhogDown,groundhogX,groundhogY);
     groundhogY+=groundhogSpeed;
     if(groundhogY+80>height){
        groundhogY=height-80;
     }
     break;
     case RIGHT:
+    image(groundhogRight,groundhogX,groundhogY); 
+
     groundhogX+=groundhogSpeed;
     if(groundhogX+80>width){
        groundhogX=width-80;
     }
     break;
     case LEFT:
+    image(groundhogLeft,groundhogX,groundhogY);
     groundhogX-=groundhogSpeed;
     if(groundhogX<=0){
        groundhogX=0; 
